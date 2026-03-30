@@ -5,8 +5,9 @@ xrdb ~/.Xresources
 
 picom &
 dunst &
-feh --recursive --bg-scale --randomize ~/pictures/wallpapers/ &
+feh --recursive --bg-fill --randomize ~/pictures/wallpapers/ &
 slstatus &
 pipewire &
+easyeffects --gapplication-service &
 ~/.local/share/scripts/mail-check.sh &
 exec dwm
