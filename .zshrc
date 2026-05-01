@@ -30,7 +30,7 @@ function rmd {
 export VISUAL=nvim
 export EDITOR=$VISUAL
 export BROWSER=qutebrowser
-export PAGER=less
+export PAGER="less"
 export MANPAGER="nvim +Man!"
 export GPG_TTY=$(tty)
 export BIBFILE="~/basemhnt/latex/bibli.bib"

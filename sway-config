@@ -1,0 +1,122 @@
+set $mod Mod4
+set $term foot
+set $menu wmenu-run
+
+set $bg0 #1d2021
+set $bg1 #3c3836
+set $bg2 #504945
+set $fg  #ebdbb2
+set $blue #458588
+set $red  #fb4934
+
+client.focused          $blue $blue $fg $blue $blue
+client.unfocused        $bg1  $bg1  $fg $bg2 $bg1
+client.urgent           $red  $red  $fg $red $red
+client.focused_inactive $bg2  $bg2  $fg $bg2 $bg2
+
+default_border pixel 1
+gaps inner 0
+gaps outer 0
+
+output eDP-1 primary
+
+input type:touchpad {
+    tap enabled
+    drag enabled
+    drag_lock enabled
+    natural_scroll disabled
+    middle_emulation disabled
+    dwt enabled
+    accel_profile adaptive
+}
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# launchers
+bindsym $mod+r exec $menu
+bindsym $mod+Return exec $term
+
+bindsym $mod+f exec flameshot gui
+bindsym $mod+z exec /home/acutewoof/.local/share/scripts/view.sh
+bindsym $mod+y exec /home/acutewoof/.local/share/scripts/yt.sh
+bindsym $mod+w exec /home/acutewoof/.local/share/scripts/addbookmark.sh
+bindsym $mod+g exec /home/acutewoof/.local/share/scripts/bookmark.sh
+
+bindsym $mod+b exec /home/acutewoof/.local/share/scripts/browse.sh
+bindsym $mod+m exec /home/acutewoof/.local/share/scripts/find-man.sh
+bindsym $mod+u exec /home/acutewoof/.local/share/scripts/find-file.sh
+bindsym $mod+n exec /home/acutewoof/.local/share/scripts/find-notes.sh
+bindsym $mod+p exec /home/acutewoof/.local/share/scripts/find-pass.sh
+bindsym $mod+t exec /home/acutewoof/.local/share/scripts/find-rfc.sh
+bindsym $mod+a exec /home/acutewoof/.local/share/scripts/play-album.sh
+
+bindsym $mod+semicolon exec mpc toggle
+
+# focus movement (like j/k)
+bindsym $mod+j focus next
+bindsym $mod+k focus prev
+
+# kill window
+bindsym $mod+q kill
+
+# layout-ish controls (approximation)
+bindsym $mod+e fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+
+# workspace switching (TAGKEYS equivalent)
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+
+# move container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+# focus monitor
+bindsym $mod+comma focus output left
+bindsym $mod+period focus output right
+bindsym $mod+Shift+comma move container to output left
+bindsym $mod+Shift+period move container to output right
+
+# reload/exit
+bindsym $mod+Shift+q exit
+bindsym $mod+Shift+c reload
+
+bar {
+    position top
+
+    colors {
+        background #1d2021
+        statusline #ebdbb2
+
+        focused_workspace  #458588 #458588 #ebdbb2
+        active_workspace   #3c3836 #3c3836 #ebdbb2
+        inactive_workspace #1d2021 #1d2021 #ebdbb2
+        urgent_workspace   #fb4934 #fb4934 #ebdbb2
+    }
+
+    status_command slstatus
+}
+
+exec_always /home/acutewoof/.autostart.sh
