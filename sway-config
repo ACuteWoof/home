@@ -1,6 +1,6 @@
 set $mod Mod4
 set $term foot
-set $menu wmenu-run
+set $menu bemenu-run
 
 set $bg0 #1d2021
 set $bg1 #3c3836
@@ -17,8 +17,6 @@ client.focused_inactive $bg2  $bg2  $fg $bg2 $bg2
 default_border pixel 1
 gaps inner 0
 gaps outer 0
-
-output eDP-1 primary
 
 input type:touchpad {
     tap enabled
@@ -44,7 +42,7 @@ set $ws9 "9"
 bindsym $mod+r exec $menu
 bindsym $mod+Return exec $term
 
-bindsym $mod+f exec flameshot gui
+bindsym $mod+f exec grimshot copy area
 bindsym $mod+z exec /home/acutewoof/.local/share/scripts/view.sh
 bindsym $mod+y exec /home/acutewoof/.local/share/scripts/yt.sh
 bindsym $mod+w exec /home/acutewoof/.local/share/scripts/addbookmark.sh
@@ -116,7 +114,7 @@ bar {
         urgent_workspace   #fb4934 #fb4934 #ebdbb2
     }
 
-    status_command slstatus
+    status_command i3status
 }
 
 exec_always /home/acutewoof/.autostart.sh
