@@ -7,8 +7,6 @@ Xft.rgba: rgb
 Xft.dpi: 168
 
 xterm*faceName: Monaspace Neon
-! xterm*faceName: B612 Mono Regular
-xterm*faceSize: 11
 
 xterm*translations: #override \n\
 	Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
