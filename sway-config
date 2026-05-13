@@ -41,7 +41,7 @@
 
 # launchers
 	bindsym $mod+r exec DISPLAY=:0 WEBKIT_DISABLE_COMPOSITING_MODE=1 LIBGL_ALWAYS_SOFTWARE=1 $menu
-	bindsym $mod+Return exec $term
+	bindsym $mod+Return exec DISPLAY=:0 WEBKIT_DISABLE_COMPOSITING_MODE=1 LIBGL_ALWAYS_SOFTWARE=1 $term
 
 	bindsym $mod+f exec grimshot copy area
 	bindsym $mod+z exec /home/acutewoof/.local/share/scripts/view.sh
@@ -131,6 +131,7 @@
 	}
 
 	output eDP-1 mode 2880x1800@120Hz
+	output HDMI-A-1 mode 1920x1080@75Hz
 	xwayland disable
 	exec /home/acutewoof/.autostart.sh
 	exec autotiling
