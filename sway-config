@@ -1,6 +1,7 @@
 	set $mod Mod4
 	set $term foot
-	set $menu bemenu-run
+	set $menu bemenu-run --fb "#282828" --ff "#ebdbb2" --nb "#282828" --nf "#ebdbb2" --tb "#282828" --hb "#282828" --tf "#fb4934" --hf "#fabd2f" --nf "#ebdbb2" --af "#ebdbb2" --ab "#282828"
+ 
 
 	set $bg0 #1d2021
 	set $bg1 #3c3836
@@ -14,8 +15,9 @@
 	client.urgent           $red  $red  $fg $red $red
 	client.focused_inactive $bg2  $bg2  $fg $bg2 $bg2
 
+
 	default_border pixel 1
-	gaps inner 0
+	gaps inner 5
 	gaps outer 0
 
 	input type:touchpad {
@@ -40,8 +42,8 @@
 	set $ws1 "0"
 
 # launchers
-	bindsym $mod+r exec DISPLAY=:0 WEBKIT_DISABLE_COMPOSITING_MODE=1 LIBGL_ALWAYS_SOFTWARE=1 $menu
-	bindsym $mod+Return exec DISPLAY=:0 WEBKIT_DISABLE_COMPOSITING_MODE=1 LIBGL_ALWAYS_SOFTWARE=1 $term
+	bindsym $mod+r exec DISPLAY=:0 $menu
+	bindsym $mod+Return exec DISPLAY=:0 $term
 
 	bindsym $mod+f exec grimshot copy area
 	bindsym $mod+z exec /home/acutewoof/.local/share/scripts/view.sh
@@ -130,12 +132,20 @@
 	    status_command i3status
 	}
 
-	output eDP-1 mode 2880x1800@120Hz
-	output HDMI-A-1 mode 1920x1080@75Hz
+	output eDP-1 mode 2880x1800@120Hz position 0 1080 scale 2
+	output DP-1 mode 1920x1080@75Hz position 0 0 scale 1
 	xwayland disable
-	exec /home/acutewoof/.autostart.sh
 	exec autotiling
+	exec --no-startup-id dbus-update-activation-environment --all
 	exec xwayland-satellite
-	exec_always kanshi
-	exec_always /home/acutewoof/.wallpaper.sh
-	exec DISPLAY=:0 xrdb /home/acutewoof/.Xresources
+	exec /home/acutewoof/.local/share/scripts/mail-check.sh
+	exec dunst
+	exec blueman-applet
+	exec easyeffects --gapplication-service
+	exec wl-paste --watch cliphist store
+	exec xfce4-power-manager
+
+	set $wallpapers_path /home/acutewoof/pictures/wallpapers
+	output "eDP-1" bg `find $wallpapers_path -type f | shuf -n 1` fill
+	output "DP-1" bg `find $wallpapers_path -type f | shuf -n 1` fill
+
